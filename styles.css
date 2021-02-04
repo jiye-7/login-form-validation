@@ -52,10 +52,11 @@ font-family: 'Montserrat', sans-serif; */
   display: flex;
   align-items: center;
   font-weight: lighter;
+  width: 5em;
 }
 
 .form--list__input {
-  width: 22em;
+  width: 20em;
   height: 2.5em;
   border-radius: 0.3em;
 }
@@ -80,4 +81,19 @@ button {
   border-radius: 0.3em;
   margin-top: 2.5em;
   font-size: 1em;
+}
+
+.valid--icon {
+  width: 1.5em;
+}
+
+/* DOM에서 추가할 속성들 */
+.input__id.input__value__check {
+  color: tomato;
+  padding: 0em 0.5em;
+  background-color: rgba(255, 192, 203, 0.493);
+}
+
+.input__id.input__check {
+  color: green;
 }
