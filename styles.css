@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=Montserrat:ital,wght@1,300&display=swap");
-/* font-family: 'Cormorant Garamond', serif;
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap");
+/*font-family: 'Cormorant Garamond', serif;
 font-family: 'Montserrat', sans-serif; */
 * {
   box-sizing: border-box;
@@ -29,12 +29,36 @@ font-family: 'Montserrat', sans-serif; */
 
 .form--header {
   text-align: center;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .form--header > h1 {
   margin-bottom: 1em;
+  font-size: 2.4em;
 }
 
 .form--header > p {
   margin-bottom: 3em;
+}
+
+.form--list {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3em;
+  margin-bottom: 1em;
+}
+
+.form--list label {
+  display: flex;
+  align-items: center;
+}
+
+.form--list__input {
+  width: 20em;
+  height: 2.5em;
+  border-radius: 0.3em;
+}
+
+.form--list__check {
+  padding-top: 2em;
 }
