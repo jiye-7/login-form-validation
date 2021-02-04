@@ -18,3 +18,23 @@ font-family: 'Montserrat', sans-serif; */
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.form {
+  background-color: rgb(203, 166, 195, 0.4);
+  width: 600px;
+  height: 700px;
+  padding: 4rem;
+  border-radius: 3rem;
+}
+
+.form--header {
+  text-align: center;
+}
+
+.form--header > h1 {
+  margin-bottom: 1em;
+}
+
+.form--header > p {
+  margin-bottom: 3em;
+}
