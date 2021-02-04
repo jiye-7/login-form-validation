@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital@1&family=Montserrat:ital,wght@1,300&display=swap");
+/* font-family: 'Cormorant Garamond', serif;
+font-family: 'Montserrat', sans-serif; */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center; /* 주축->기본값 row에서 / certer ->가운데정렬*/
+  align-items: center;
+  width: 100vw;
+  height: 100vw;
+  background-image: url(image/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
