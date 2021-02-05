@@ -112,6 +112,26 @@ function handlePasswordConfirm() {
     };
   }
 }
+
+// [유효성 검증 함수]: name null check
+function handleNameCheck() {
+  if (moreThanLength(inputName.value, 5)) {
+    inputName.classList.add("input__nameCheck");
+    validIcon[3].lastElementChild.classList.add("fa-check");
+    validIcon[3].style.color = "green";
+  } else {
+    //아이디는 5글자 이상 가능합니다.
+    inputName.classList.add("input__nameValue__check");
+    document.querySelector(".input__nameValue__check").value =
+      "아이디는 5글자 이상 가능합니다. :)";
+    document.querySelector(".input__nameValue__check").onclick = function () {
+      document.querySelector(".input__nameValue__check").value = "";
+      inputName.classList.remove("input__nameValue__check");
+    };
+  }
+}
+
 inputId.onchange = handleIdCheck;
 inputPw.onchange = handlePasswordCheck;
 inputPwc.onchange = handlePasswordConfirm;
+inputName.onchange = handleNameCheck;
