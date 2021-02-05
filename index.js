@@ -27,7 +27,7 @@ const inputPw = document.querySelector(".input__pw");
 const inputPwc = document.querySelector(".input__pwc");
 const inputName = document.querySelector(".input__name");
 const inputEmail = document.querySelector(".input__email");
-const validIcon = document.querySelector(".valid--icon");
+const validIcon = document.querySelectorAll(".valid--icon");
 
 // [유효성 검증 함수]: n개의 글자 이상
 function moreThanLength(str, n) {
@@ -46,29 +46,52 @@ function strongPassword(str) {
   );
 }
 
+// [유효성 검증 함수]: email check
 function validateEmail(email) {
   const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 }
 
+// [유효성 검증 함수]: id check
 function handleIdCheck() {
   let idLenCheck = moreThanLength(inputId.value, 5);
   let idNumAndEngCheck = onlyNumberAndEnglish(inputId.value);
 
   if (idLenCheck && idNumAndEngCheck) {
-    inputId.classList.remove("input__value__check");
-    inputId.classList.add("input__check");
-    validIcon.lastElementChild.classList.add("fa-check");
-    validIcon.style.color = "green";
+    inputId.classList.remove("input__idValue__check");
+    inputId.classList.add("input__idCheck");
+    validIcon[0].lastElementChild.classList.add("fa-check");
+    validIcon[0].style.color = "green";
   } else {
-    inputId.classList.add("input__value__check");
-    document.querySelector(".input__value__check").value = "아이디가 짧습니다.";
-    validIcon.lastElementChild.classList.remove("fa-check");
-    document.querySelector(".input__value__check").onclick = function () {
-      document.querySelector(".input__value__check").value = "";
-      inputId.classList.remove("input__value__check");
+    inputId.classList.add("input__idValue__check");
+    document.querySelector(".input__idValue__check").value =
+      "영어와 숫자만 가능합니다. 5자이상 적어주세요:)";
+    validIcon[0].lastElementChild.classList.remove("fa-check");
+    document.querySelector(".input__idValue__check").onclick = function () {
+      document.querySelector(".input__idValue__check").value = "";
+      inputId.classList.remove("input__idValue__check");
+    };
+  }
+}
+
+// [유효성 검증 함수]: password check
+function handlePasswordCheck() {
+  if (strongPassword(inputPw.value)) {
+    inputPw.classList.add("input__pwCheck");
+    validIcon[1].lastElementChild.classList.add("fa-check");
+    validIcon[1].style.color = "green";
+  } else {
+    inputPw.classList.add("input__pwValue__check");
+    console.log(document.querySelector(".input__pwValue__check").value);
+    document.querySelector(".input__pwValue__check").value =
+      "영어와 숫자만 가능합니다. 8자이상 적어주세요:)";
+    validIcon[1].lastElementChild.classList.remove("fa-check");
+    document.querySelector(".input__pwValue__check").onclick = function () {
+      document.querySelector(".input__pwValue__check").value = "";
+      inputPw.classList.remove("input__pwValue__check");
     };
   }
 }
 
 inputId.onchange = handleIdCheck;
+inputPw.onchange = handlePasswordCheck;

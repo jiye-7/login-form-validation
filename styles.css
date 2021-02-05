@@ -87,13 +87,27 @@ button {
   width: 1.5em;
 }
 
-/* DOM에서 추가할 속성들 */
-.input__id.input__value__check {
-  color: tomato;
+.form--list__input {
   padding: 0em 0.5em;
+}
+
+/* DOM에서 추가할 속성들 */
+/* ID check */
+.input__id.input__idValue__check {
+  color: tomato;
   background-color: rgba(255, 192, 203, 0.493);
 }
 
-.input__id.input__check {
+.input__id.input__idCheck {
+  color: green;
+}
+
+/* password check */
+.input__pw.input__pwValue__check {
+  color: tomato;
+  background-color: rgba(255, 192, 203, 0.493);
+}
+
+.input__pw.input__pwCheck {
   color: green;
 }
