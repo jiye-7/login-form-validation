@@ -131,3 +131,13 @@ button {
 .input__name.input__nameCheck {
   color: green;
 }
+
+/* email check */
+.input__email.input__emailValue__check {
+  color: tomato;
+  background-color: rgba(255, 192, 203, 0.493);
+}
+
+.input__email.input__emailCheck {
+  color: green;
+}

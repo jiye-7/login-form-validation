@@ -68,7 +68,7 @@ function handleIdCheck() {
       "영어와 숫자만 가능합니다. 5자이상 적어주세요:)";
     validIcon[0].lastElementChild.classList.remove("fa-check");
     document.querySelector(".input__idValue__check").onclick = function () {
-      document.querySelector(".input__idValue__check").value = "";
+      document.querySelector(".input__id").value = "";
       inputId.classList.remove("input__idValue__check");
     };
   }
@@ -83,12 +83,11 @@ function handlePasswordCheck() {
     validIcon[1].style.color = "green";
   } else {
     inputPw.classList.add("input__pwValue__check");
-    //console.log(document.querySelector(".input__pwValue__check").value);
     document.querySelector(".input__pwValue__check").value =
       "영어와 숫자, 특수문자를 8자 이상 입력해주세요 :)";
     validIcon[1].lastElementChild.classList.remove("fa-check");
     document.querySelector(".input__pwValue__check").onclick = function () {
-      document.querySelector(".input__pwValue__check").value = "";
+      document.querySelector(".input__pw").value = "";
       inputPw.classList.remove("input__pwValue__check");
     };
   }
@@ -107,7 +106,7 @@ function handlePasswordConfirm() {
       "password가 일치하지 않습니다 :(";
     validIcon[2].lastElementChild.classList.remove("fa-check");
     document.querySelector(".input__pwcValue__check").onclick = function () {
-      document.querySelector(".input__pwcValue__check").value = "";
+      document.querySelector(".input__pwc").value = ""; //동적으로 만든 클래스를 삭제했지만 들어오는 상태..모든 태그 동일
       inputPwc.classList.remove("input__pwcValue__check");
     };
   }
@@ -125,8 +124,24 @@ function handleNameCheck() {
     document.querySelector(".input__nameValue__check").value =
       "아이디는 5글자 이상 가능합니다. :)";
     document.querySelector(".input__nameValue__check").onclick = function () {
-      document.querySelector(".input__nameValue__check").value = "";
+      document.querySelector(".input__name").value = "";
       inputName.classList.remove("input__nameValue__check");
+    };
+  }
+}
+
+function handleEmailCheck() {
+  if (validateEmail(inputEmail.value)) {
+    inputEmail.classList.add("input__emailCheck");
+    validIcon[4].lastElementChild.classList.add("fa-check");
+    validIcon[4].style.color = "green";
+  } else {
+    inputEmail.classList.add("input__emailValue__check");
+    document.querySelector(".input__emailValue__check").value =
+      "이메일을 정확히 적어주세요 :)";
+    document.querySelector(".input__emailValue__check").onclick = function () {
+      document.querySelector(".input__email").value = "";
+      inputEmail.classList.remove("input__emailValue__check");
     };
   }
 }
@@ -135,3 +150,4 @@ inputId.onchange = handleIdCheck;
 inputPw.onchange = handlePasswordCheck;
 inputPwc.onchange = handlePasswordConfirm;
 inputName.onchange = handleNameCheck;
+inputEmail.onchange = handleEmailCheck;
