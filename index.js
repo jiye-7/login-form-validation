@@ -77,14 +77,15 @@ function handleIdCheck() {
 // [유효성 검증 함수]: password check
 function handlePasswordCheck() {
   if (strongPassword(inputPw.value)) {
+    inputPw.classList.remove("input__pwValue__check");
     inputPw.classList.add("input__pwCheck");
     validIcon[1].lastElementChild.classList.add("fa-check");
     validIcon[1].style.color = "green";
   } else {
     inputPw.classList.add("input__pwValue__check");
-    console.log(document.querySelector(".input__pwValue__check").value);
+    //console.log(document.querySelector(".input__pwValue__check").value);
     document.querySelector(".input__pwValue__check").value =
-      "영어와 숫자만 가능합니다. 8자이상 적어주세요:)";
+      "영어와 숫자, 특수문자를 8자 이상 입력해주세요 :)";
     validIcon[1].lastElementChild.classList.remove("fa-check");
     document.querySelector(".input__pwValue__check").onclick = function () {
       document.querySelector(".input__pwValue__check").value = "";
@@ -93,5 +94,24 @@ function handlePasswordCheck() {
   }
 }
 
+// [유효성 검증 함수]: password confirm
+function handlePasswordConfirm() {
+  if (inputPw.value === inputPwc.value) {
+    inputPwc.classList.remove("input__pwcValue__check");
+    inputPwc.classList.add("input__pwcCheck");
+    validIcon[2].lastElementChild.classList.add("fa-check");
+    validIcon[2].style.color = "green";
+  } else {
+    inputPwc.classList.add("input__pwcValue__check");
+    document.querySelector(".input__pwcValue__check").value =
+      "password가 일치하지 않습니다 :(";
+    validIcon[2].lastElementChild.classList.remove("fa-check");
+    document.querySelector(".input__pwcValue__check").onclick = function () {
+      document.querySelector(".input__pwcValue__check").value = "";
+      inputPwc.classList.remove("input__pwcValue__check");
+    };
+  }
+}
 inputId.onchange = handleIdCheck;
 inputPw.onchange = handlePasswordCheck;
+inputPwc.onchange = handlePasswordConfirm;
