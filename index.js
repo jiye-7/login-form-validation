@@ -70,6 +70,7 @@ function handleIdCheck() {
     validIcon[0].style.color = "green";
     resultId = true;
   } else {
+    inputId.classList.remove("input__idCheck");
     inputId.classList.add("input__idValue__check");
     document.querySelector(".input__idValue__check").value =
       "영어와 숫자만 가능합니다. 5자이상 적어주세요:)";
@@ -91,11 +92,14 @@ function handlePasswordCheck() {
     validIcon[1].style.color = "green";
     resultPw = true;
   } else {
+    inputPw.type = "text";
+    inputPw.classList.remove("input__pwCheck");
     inputPw.classList.add("input__pwValue__check");
     document.querySelector(".input__pwValue__check").value =
       "영어와 숫자, 특수문자를 8자 이상 입력해주세요 :)";
     validIcon[1].lastElementChild.classList.remove("fa-check");
     document.querySelector(".input__pwValue__check").onclick = function () {
+      inputPw.type = "password";
       document.querySelector(".input__pw").value = "";
       inputPw.classList.remove("input__pwValue__check");
       resultPw = false;
@@ -112,11 +116,14 @@ function handlePasswordConfirm() {
     validIcon[2].style.color = "green";
     resultPwc = true;
   } else {
+    inputPwc.type = "text";
+    inputPwc.classList.remove("input__pwcCheck");
     inputPwc.classList.add("input__pwcValue__check");
     document.querySelector(".input__pwcValue__check").value =
       "password가 일치하지 않습니다 :(";
     validIcon[2].lastElementChild.classList.remove("fa-check");
     document.querySelector(".input__pwcValue__check").onclick = function () {
+      inputPwc.type = "password";
       document.querySelector(".input__pwc").value = ""; //동적으로 만든 클래스를 삭제했지만 들어오는 상태..모든 태그 동일
       inputPwc.classList.remove("input__pwcValue__check");
       resultPwc = false;
@@ -133,6 +140,7 @@ function handleNameCheck() {
     resultName = true;
   } else {
     //아이디는 5글자 이상 가능합니다.
+    inputName.classList.remove("input__nameCheck");
     inputName.classList.add("input__nameValue__check");
     document.querySelector(".input__nameValue__check").value =
       "아이디는 5글자 이상 가능합니다. :)";
@@ -152,6 +160,7 @@ function handleEmailCheck() {
     validIcon[4].style.color = "green";
     resultEmail = true;
   } else {
+    inputEmail.classList.remove("input__emailCheck");
     inputEmail.classList.add("input__emailValue__check");
     document.querySelector(".input__emailValue__check").value =
       "이메일을 정확히 적어주세요 :)";
