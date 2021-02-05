@@ -28,6 +28,12 @@ const inputPwc = document.querySelector(".input__pwc");
 const inputName = document.querySelector(".input__name");
 const inputEmail = document.querySelector(".input__email");
 const validIcon = document.querySelectorAll(".valid--icon");
+const singupBtn = document.querySelector("button");
+const resultId = false;
+const resultPw = false;
+const resultPwc = false;
+const resultName = false;
+const resultEmail = false;
 
 // [유효성 검증 함수]: n개의 글자 이상
 function moreThanLength(str, n) {
@@ -62,6 +68,7 @@ function handleIdCheck() {
     inputId.classList.add("input__idCheck");
     validIcon[0].lastElementChild.classList.add("fa-check");
     validIcon[0].style.color = "green";
+    resultId = true;
   } else {
     inputId.classList.add("input__idValue__check");
     document.querySelector(".input__idValue__check").value =
@@ -70,6 +77,7 @@ function handleIdCheck() {
     document.querySelector(".input__idValue__check").onclick = function () {
       document.querySelector(".input__id").value = "";
       inputId.classList.remove("input__idValue__check");
+      resultId = false;
     };
   }
 }
@@ -81,6 +89,7 @@ function handlePasswordCheck() {
     inputPw.classList.add("input__pwCheck");
     validIcon[1].lastElementChild.classList.add("fa-check");
     validIcon[1].style.color = "green";
+    resultPw = true;
   } else {
     inputPw.classList.add("input__pwValue__check");
     document.querySelector(".input__pwValue__check").value =
@@ -89,6 +98,7 @@ function handlePasswordCheck() {
     document.querySelector(".input__pwValue__check").onclick = function () {
       document.querySelector(".input__pw").value = "";
       inputPw.classList.remove("input__pwValue__check");
+      resultPw = false;
     };
   }
 }
@@ -100,6 +110,7 @@ function handlePasswordConfirm() {
     inputPwc.classList.add("input__pwcCheck");
     validIcon[2].lastElementChild.classList.add("fa-check");
     validIcon[2].style.color = "green";
+    resultPwc = true;
   } else {
     inputPwc.classList.add("input__pwcValue__check");
     document.querySelector(".input__pwcValue__check").value =
@@ -108,6 +119,7 @@ function handlePasswordConfirm() {
     document.querySelector(".input__pwcValue__check").onclick = function () {
       document.querySelector(".input__pwc").value = ""; //동적으로 만든 클래스를 삭제했지만 들어오는 상태..모든 태그 동일
       inputPwc.classList.remove("input__pwcValue__check");
+      resultPwc = false;
     };
   }
 }
@@ -118,6 +130,7 @@ function handleNameCheck() {
     inputName.classList.add("input__nameCheck");
     validIcon[3].lastElementChild.classList.add("fa-check");
     validIcon[3].style.color = "green";
+    resultName = true;
   } else {
     //아이디는 5글자 이상 가능합니다.
     inputName.classList.add("input__nameValue__check");
@@ -126,15 +139,18 @@ function handleNameCheck() {
     document.querySelector(".input__nameValue__check").onclick = function () {
       document.querySelector(".input__name").value = "";
       inputName.classList.remove("input__nameValue__check");
+      resultName = false;
     };
   }
 }
 
+// [유효성 검증 함수]: email check
 function handleEmailCheck() {
   if (validateEmail(inputEmail.value)) {
     inputEmail.classList.add("input__emailCheck");
     validIcon[4].lastElementChild.classList.add("fa-check");
     validIcon[4].style.color = "green";
+    resultEmail = true;
   } else {
     inputEmail.classList.add("input__emailValue__check");
     document.querySelector(".input__emailValue__check").value =
@@ -142,7 +158,17 @@ function handleEmailCheck() {
     document.querySelector(".input__emailValue__check").onclick = function () {
       document.querySelector(".input__email").value = "";
       inputEmail.classList.remove("input__emailValue__check");
+      resultEmail = false;
     };
+  }
+}
+
+//[유효성 검증 함수]: sign up check(전체 확인 후 결과를 체크)
+function handleSignUpCheck() {
+  if (resultId && resultPw && resultPwc && resultName && resultEmail) {
+    alert("회원가입이 완료되었습니다! 반가워요:)");
+  } else {
+    alert("회원가입 실패! 다시 한번 입력한 값을 확인해보세요 :(");
   }
 }
 
@@ -151,3 +177,4 @@ inputPw.onchange = handlePasswordCheck;
 inputPwc.onchange = handlePasswordConfirm;
 inputName.onchange = handleNameCheck;
 inputEmail.onchange = handleEmailCheck;
+singupBtn.onclick = handleSignUpCheck;
