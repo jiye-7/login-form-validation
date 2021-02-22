@@ -139,7 +139,7 @@ function handleNameCheck() {
     validIcon[3].style.color = "green";
     resultName = true;
   } else {
-    //아이디는 5글자 이상 가능합니다.
+    //아이디는 5글자 이상 가능
     inputName.classList.remove("input__nameCheck");
     inputName.classList.add("input__nameValue__check");
     document.querySelector(".input__nameValue__check").value =
